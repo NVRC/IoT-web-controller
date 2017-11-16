@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>AVA-SH LED Lighting System Controller</title>
+    <meta name="AVA-SH" content="IoT">
+
+
+    <link rel="stylesheet" href="css/styles.min.css">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="header">
+    </div>
+    <div id="menu">
+        <h1>AVA-SH Controller</h1>
+    </div>
+    <div id="content">
+        <div id="led_buttons">
+
+        </div>
+        <div>
+            <input type="button" id="reset" value="Reset" onclick="reset()">
+
+
+        </div>
+        <div id="picker_wrapper">
+            <div id="picker" class="cp-default"></div>
+            <div id="picker_indicator">
+        </div>
+        <div id="slider_wrapper">
+            <div id="slider"></div>
+            <div id="slider-indicator"></div>
+        </div>
+        <input type="color" id="colorSel">
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js/gradient-min.js"></script>
+    <script src="js/scripts.js"></script>
+
+</body>
+</html>
