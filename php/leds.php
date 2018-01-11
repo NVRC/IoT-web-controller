@@ -12,7 +12,7 @@
             //chdir($python);
             //$command = escapeshellcmd('sudo python led_output.py '.$colorString);
             //$output = shell_exec($command);
-            exec('sudo python2 /var/www/led-web-controller/python/support/nLevelLinearGradient.py '.$colors[0].' '.$colors[59].' 255');
+            exec('sudo python2 /var/www/led-web-controller/python/support/nLevelLinearGradient.py '.$colors[0].' '.$colors[59].' '.$colors[60]);
 
             //chdir($currDir);
 
