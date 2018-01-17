@@ -2,21 +2,12 @@ const NUM_LEDS = 60;
 var cpLinker;
 var num_keyColor = 0;
 var colorArray = new Array(NUM_LEDS);
-var DEF_BRIGHTNESS
 
 
 
 
 
-    initLedButtons();
-    initSlider();
-
-
-function initSlider(){
-
-}
-
-
+initLedButtons();
 
 function initLedButtons(){
     var container = document.getElementById('led_buttons');
@@ -95,10 +86,10 @@ function changeColor(){
         var formData = "";
         var i;
         var xml='<?xml version=1.0 encoding=UTF-8?>';
-        for(i=0;i<NUM_LEDS;i++){
+        for(i=0;i<NUM_LEDS-1;i++){
             formData += i+"="+colorArray[i]+"&";
         }
-        formData += NUM_LEDS+"="+document.getElementById("brightness").value;
+        formData += NUM_LEDS-1+"="+colorArray[NUM_LEDS-1];
         formData = formData.replace(/#/g,'');
         var URI = 'http://192.168.0.100/php/leds.php?'+formData;
 
@@ -129,8 +120,6 @@ function applyColors(){
 
 
 
-
-
 function reset(){
     //var master = document.getElementsByClassName('round_button');
     master = document.querySelectorAll( '.round_button' );
@@ -141,8 +130,6 @@ function reset(){
         curr.keyColor = "false";
     }
     num_keyColor = 0;
-    document.getElementById("brightness").value = DEF_BRIGHTNESS;
-
 
 }
 
