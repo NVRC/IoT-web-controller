@@ -11,7 +11,7 @@ var ledArray = new Array(NUM_LEDS);
 var colorSel = document.getElementById('colorSel');
 const INIT = -1;
 var previous = INIT;
-const DEFAULT_COLOR = "#ffffff";
+const DEFAULT_COLOR = "#000000";
 
 class ledButton {
     // The constructor encompasses function declarations
@@ -22,7 +22,7 @@ class ledButton {
     constructor( id ){
             let _id = id;
             let _active = false;
-            let _pair = false;
+            let _pairs = [false,false];
             let _color = false;
 
         this.isActive = function(){
@@ -37,13 +37,12 @@ class ledButton {
             _active = true;
         }
 
-        this.getPair = function(){
-            
-            return _pair;
+        this.getPairs = function(){
+            return _pairs;
         }
 
-        this.setPair = function( id ){
-            _pair = id;
+        this.setPairs = function( set ){
+            _pairs = set;
         }
 
         this.reset = function(){
@@ -53,7 +52,8 @@ class ledButton {
 
             _active = false;
             _color = false;
-            _pair = false;
+            _pairs[0] = false;
+            _pairs[1] = false;
 
         }
 
@@ -95,26 +95,31 @@ class ledButton {
                     if(i != _id){
                     var temp = ledArray[i];
                     if(temp.isActive()){
-                        console.log(temp.getPair());
-                        if(!temp.getPair()){
+                        var check = temp.getPairs();
+                        console.log('check: '+check[0]);
+                        if(!check[0]){
                             console.log(i + ' should pair with '+ _id);
 
-                            temp.setPair(_id);
-                            this.setPair(i);
+                            temp.setPairs([_id,false]);
+                            this.setPairs([i,false]);
                             // Draw a gradient across the leds that exist
                             // between the pair
                             drawLedGradient( _id, i );
+                            break;
                         } else {
                             // Paired use case
                             // Determine if
                             //      pair --- sel --- pair
                             //  or
                             //      sel --- pair --- pair
-                            let pair = temp.getPair();
-                            console.log('anchor: '+_id+'\t target: '+pair);
+                            let pair = temp.getPairs();
+
+                            console.log('anchor: '+_id+'\t target: '+pair[0]);
                             console.log('anchor: '+_id+'\t target: '+i);
-                            drawLedGradient( _id, pair );
+
+                            drawLedGradient( _id, pair[0] );
                             drawLedGradient( _id, i );
+                            break;
                         }
                     } else {
                         // Do nothing if the led is still in default state
@@ -148,13 +153,46 @@ function drawLedGradient( anchor, target ){
         swapAnchor = target;
         swapTarget = anchor;
     }
-    for(let i = swapTarget+1; i < swapAnchor;i++){
+    for(let i = swapTarget; i < swapAnchor;i++){
         ledArray[i].setColor(stepGradient[gradientHelper]);
-        ledArray[i].setPair(true);
+        ledArray[i].setPairs([true,true]);
         gradientHelper++;
-
-
     }
+    if(ledsSet()){
+        postToServer();
+    }
+
+}
+
+//Check if every LED is active
+function ledsSet(){
+    for(let i = 0; i<NUM_LEDS; i++){
+        if(!ledArray[i].isActive){
+            return false;
+        }
+    }
+    return true;
+}
+
+function postToServer(){
+    console.log('Output to LEDS');
+    let formData = "";
+    let xml='<?xml version=1.0 encoding=UTF-8?>';
+    let brightness = document.getElementById('brightness').value;
+    for(let i=0;i<NUM_LEDS;i++){
+        formData += i+"="+ledArray[i].getColor()+"&";
+    }
+    formData += "brightness="+brightness;
+    formData = formData.replace(/#/g,'');
+    let URI = 'http://192.168.0.100/php/leds.php?'+formData;
+
+    console.log(formData);
+
+    var request = new XMLHttpRequest();
+    request.open("POST",URI,true);
+    request.send(formData);
+
+    console.log('LED Form submitted');
 }
 
 function buildLeds(){
