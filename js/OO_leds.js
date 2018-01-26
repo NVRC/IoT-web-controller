@@ -167,7 +167,7 @@ function drawLedGradient( anchor, target ){
 //Check if every LED is active
 function ledsSet(){
     for(let i = 0; i<NUM_LEDS; i++){
-        if(!ledArray[i].isActive){
+        if(!ledArray[i].isActive()){
             return false;
         }
     }
