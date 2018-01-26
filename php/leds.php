@@ -1,18 +1,18 @@
 <?php
     $NUM_LEDS = 60;
 
-        if(isset($_GET)){
-            error_log('$_GET: '.var_dump($_GET));
-            for($i=0; $i<$NUM_LEDS; $i++){
-                $colors[$i] = $_GET[$i];
-                $colorString = $colorString.$_GET[$i];
+        if(isset($_POST)){
+            error_log('$_GET: '.var_dump($_POST));
+            for($i=0; $i<$NUM_LEDS+1; $i++){
+                $colors[$i] = $_POST[$i];
+                $colorString = $colorString.$_POST[$i].' ';
             }
 
             error_log("colorString: ".$colorString);
             //chdir($python);
             //$command = escapeshellcmd('sudo python led_output.py '.$colorString);
             //$output = shell_exec($command);
-            exec('sudo python2 /var/www/led-web-controller/python/support/nLevelLinearGradient.py '.$colors[0].' '.$colors[59].' '.$colors[60]);
+            exec('sudo python2 /var/www/led-web-controller/python/support/nLevelLinearGradient.py '.$colorString);
 
             //chdir($currDir);
 
