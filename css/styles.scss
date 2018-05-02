@@ -3,63 +3,23 @@ $button-color-darker: #262626;
 $width-percentage: 1.2vw;
 
 
-@media only screen and (min-device-width: 1224px){
-    .round_button {
-        display: block;
-        float: left;
-        width: $width-percentage;
-        height: $width-percentage;
-        border: 2px solid $button-color;
-        border-radius: 50%;
-        color: $button-color;
-        text-align:center;
-        text-decoration:none;
-        background: #464646;
-        box-shadow: 0 0 3px gray;
-        font-size:20px;
-        font-weight:bold;
-    }
+
+.round_button {
+    //display: block;
+    //float: left;
+    width: 3%;
+    height: 3%;
+    border: 2px solid $button-color;
+    border-radius: 50%;
+    color: $button-color;
+    //text-align:center;
+    text-decoration:none;
+    background: #464646;
+    box-shadow: 0 0 3px gray;
+    font-size:20px;
+    font-weight:bold;
 }
 
-/* Smartphones (landscape) ----------- */
-@media only screen and (min-width : 321px) {
-    .round_button {
-        display: block;
-        float: left;
-        width: $width-percentage;
-        height: $width-percentage;
-        border: 2px solid $button-color;
-        border-radius: 50%;
-        color: $button-color;
-        text-align:center;
-        text-decoration:none;
-        background: #464646;
-        box-shadow: 0 0 3px gray;
-        font-size:20px;
-        font-weight:bold;
-    }
-/* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
-    .round_button {
-        display: block;
-        float: none;
-        width: $width-percentage;
-        height: $width-percentage;
-        border: 2px solid $button-color;
-        border-radius: 50%;
-        color: $button-color;
-        text-align:center;
-        text-decoration:none;
-        background: #464646;
-        box-shadow: 0 0 3px gray;
-        font-size:20px;
-        font-weight:bold;
-    }
-/* Styles */
-}
 
 #picker_wrapper {
     width: 20vw;
@@ -80,7 +40,6 @@ $width-percentage: 1.2vw;
 #slider_indicator {
     width: 100%;
     height: 1vw;
-
     border: 1px solid black;
 }
 
@@ -90,27 +49,31 @@ $width-percentage: 1.2vw;
     top: -9999px;
 
 }
-#reset {
-    ;
+
+#reset{
+    margin-top: 10%;
 }
 
 .round_button:hover {
     background: $button-color-darker;
 }
 
+#led_buttons{
+    margin-left: 2.5%;
+}
 
 
 
 .slider:hover {
     opacity: 1;
 }
+
 [type="range"] {
-    margin-top: 75px;
-    margin-bottom: 60px;
-    -webkit-transform:rotate(90deg);
-       -moz-transform:rotate(90deg);
-         -o-transform:rotate(90deg);
-            transform:rotate(90deg);
+    margin-top: 50%;
+    -webkit-transform:rotate(270deg);
+       -moz-transform:rotate(270deg);
+         -o-transform:rotate(270deg);
+            transform:rotate(270deg);
 }
 
 .slider {
