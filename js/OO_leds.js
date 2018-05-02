@@ -107,12 +107,18 @@ class ledButton {
             }
         }
 
+        this.handleSide = function( button, type ){
+            
+        }
+
+
+        /*
         this.handleSide = function( button , type){
             let values = button.getPairs();
             let pair = button.getId();
             //TODO: Reduce duplicate code (prototype passing?)
             if(type == 'left'){
-                console.log('Values.right: '+ typeof(values.right));
+                console.log('Values.right: '+ values.right);
                 if(typeof(values.right) == 'number'){
                     let duple = [_id, ledArray[values.right].getPairs().right];
                     console.log('Duple :'+duple);
@@ -145,6 +151,7 @@ class ledButton {
                 }
             }
         }
+        */
 
 
         //Recursive branched search for neighbors
