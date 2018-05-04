@@ -78,7 +78,7 @@ class ledButton {
             // Set the global previous led touched by the color selector
             previous = _id;
             ledArray[_id].setColor(this.value);
-            ledArray[_id].findPair();
+            ledArray[_id].findNeighbors();
         }
 
         this.isClicked = function(){
@@ -97,60 +97,19 @@ class ledButton {
             //Ternary operators used as boundary conditions
             let leftPair = this.searchForNeighbor( (_id - 1 >= 0) ? _id - 1 : _id, -1);
             let rightPair = this.searchForNeighbor((_id + 1) < NUM_LEDS ? _id + 1 : _id, 1);
-            console.log(leftPair);
-            console.log(rightPair);
             if(leftPair instanceof ledButton){
-                this.handleSide(leftPair, 'left');
+                this.handleSide(leftPair);
             }
             if(rightPair instanceof ledButton){
-                this.handleSide(rightPair, 'right');
+                this.handleSide(rightPair);
             }
         }
-
-        this.handleSide = function( button , type){
-            let values = button.getPairs();
-            let pair = button.getId();
-            //TODO: Reduce duplicate code (prototype passing?)
-            if(type == 'left'){
-                console.log('Values.right: '+ typeof(values.right));
-                if(typeof(values.right) == 'number'){
-                    let duple = [_id, ledArray[values.right].getPairs().right];
-                    console.log('Duple :'+duple);
-                    drawLedGradient( _id, values.right, duple);
-                    //TODO: Set pairs here
-                    duple = [values.left,_id];
-                    console.log('Duple :'+duple);
-                    button.setPairs(duple);
-                    drawLedGradient( _id, pair, duple);
-
-                } else if (!values.right){
-                    this.setPairs([pair, this.getPairs().right]);
-                    let duple = [values.left,_id];
-                    button.setPairs(duple);
-                    drawLedGradient( _id, pair, duple);
-                }
-            } else if(type == 'right'){
-                if(typeof(values.left) == 'number'){
-                    console.log('Values.left: '+ values.left);
-                    let duple = [_id, ledArray[values.left].getPairs().left];
-                    drawLedGradient( _id, values.left, duple );
-                    duple = [values.left,_id];
-                    button.setPairs(duple);
-                    //TODO: Set pairs in handleSide
-                    drawLedGradient( _id, pair, duple);
-                } else if (!values.left){
-                    let duple = [_id, values.right];
-                    button.setPairs(duple);
-                    drawLedGradient( _id, pair, duple);
-                }
-            }
-        }
-
 
         //Recursive branched search for neighbors
         this.searchForNeighbor = function( curr , dir ){
             let temp = ledArray[curr];
-            if(ledArray[curr].isActive() && _id != curr){
+            if(temp.isActive() && _id != curr ){
+
                 return temp;
             } else if(curr < NUM_LEDS - 1 && curr > 0){
                 return this.searchForNeighbor(curr + dir, dir);
@@ -161,44 +120,58 @@ class ledButton {
         }
 
 
+        this.handleSide = function( button ){
+            let values = button.getPairs();
+            let buttonId = button.getId();
+            let grad = new GradientArray();
 
-        this.findPair = function(){
-            this.findNeighbors();
+            let anchorButton = ledArray[_id];
+            let stepGradient;
+
+            // TODO: Reduce code duplication with prototype passing
+            if(_id > buttonId){
+                if ((typeof(values.left) == 'number') && (typeof(values.right) == 'number')){
+                    button = ledArray[values.left];
+                    values = button.getPairs();
+                    buttonId = button.getId();
+                }
+                console.log('Left pair found. ID: '+buttonId);
+                stepGradient = grad.generateGradient(ledArray[buttonId].getColor(),
+                    ledArray[_id].getColor(),
+                    _id - buttonId + 1);
+                button.setPairs([values.left,_id]);
+                anchorButton.setPairs([buttonId,anchorButton.getPairs().right]);
+                let gradientCount = 1
+                for (let k = buttonId + 1; k < _id; k++){
+                    ledArray[k].setColor(stepGradient[gradientCount]);
+                    ledArray[k].setPairs([buttonId,_id]);
+                    gradientCount++;
+                }
+
+            } else {
+                if (typeof(values.right) == 'number' && (typeof(values.left) == 'number')){
+                    button = ledArray[values.right];
+                    values = button.getPairs();
+                    buttonId = button.getId();
+                }
+                console.log('Right pair found. ID: '+buttonId);
+                stepGradient = grad.generateGradient(ledArray[_id].getColor(),
+                    ledArray[buttonId].getColor(),
+                    buttonId - _id + 1);
+                button.setPairs([_id,button.getPairs().right]);
+                anchorButton.setPairs([anchorButton.getPairs().left,buttonId]);
+                let gradientCount = 1
+                for (let k = _id + 1; k < buttonId; k++){
+                    ledArray[k].setColor(stepGradient[gradientCount]);
+                    ledArray[k].setPairs([_id,buttonId]);
+                    gradientCount++;
+                }
+            }
         }
+
     }
 };
 
-function drawLedGradient( anchor, target, pairs ){
-    console.log('DRAW anchor: '+anchor+'\t target: '+target);
-    let offset = anchor - target;
-    console.log('offset: '+offset);
-    let grad = new GradientArray();
-    let steps = Math.abs(offset)+1;
-    let swapAnchor = anchor;
-    let swapTarget = target;
-    var stepGradient;
-    if(offset > 0){
-        stepGradient = grad.generateGradient(ledArray[target].getColor()
-            ,ledArray[anchor].getColor()
-            ,steps);
-    } else {
-        stepGradient = grad.generateGradient(ledArray[anchor].getColor()
-            ,ledArray[target].getColor()
-            ,steps);
-            swapAnchor = target;
-            swapTarget = anchor;
-    }
-    var gradientHelper = 0;
-    for(let i = swapTarget; i < swapAnchor; i++){
-        ledArray[i].setColor(stepGradient[gradientHelper]);
-        ledArray[i].setPairs(pairs);
-        gradientHelper++;
-    }
-    if(ledsSet()){
-        postToServer();
-    }
-
-}
 
 //Check if every LED is active
 function ledsSet(){
@@ -251,6 +224,13 @@ function buildLeds(){
 function reset(){
     for(let i=0;i<NUM_LEDS;i++){
         ledArray[i].reset();
+    }
+}
+
+function printPairs(){
+    for (let i=0;i<NUM_LEDS;i++){
+        values = ledArray[i].getPairs();
+        console.log(i+': ['+values.left+','+values.right+']' );
     }
 }
 
