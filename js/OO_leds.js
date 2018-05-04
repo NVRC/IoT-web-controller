@@ -167,6 +167,9 @@ class ledButton {
                     gradientCount++;
                 }
             }
+            if(ledsSet()){
+                postToServer();
+            }
         }
 
     }
@@ -195,7 +198,6 @@ function postToServer(){
     formData.append("brightness",brightness);
 
     let URI = 'http://192.168.0.100/cgi-bin/setLEDs.py?'+formData;
-
     console.log(formData);
 
     //Instantiate an asynchronous POST request
