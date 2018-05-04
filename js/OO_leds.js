@@ -193,7 +193,7 @@ function postToServer(){
     let brightness = document.getElementById('brightness').value;
     for(let i=0;i<NUM_LEDS;i++){
         //Remove Hashtags found in HTML element style.background values .replace(/#/g,'')
-        formData.append(i, ledArray[i].getColor());
+        formData.append(i, ledArray[i].getColor().replace(/#/g,''));
     }
     formData.append("brightness",brightness);
 
