@@ -211,6 +211,9 @@ function postToServer(){
 }
 
 function buildLeds(){
+    let brightness = document.getElementById('brightness');
+    brightness.addEventListener('change', brightnessListener);
+
     var container = document.getElementById('led_buttons');
     for(let i=0;i<NUM_LEDS;i++){
         var div = document.createElement('div');
@@ -226,6 +229,12 @@ function buildLeds(){
 function reset(){
     for(let i=0;i<NUM_LEDS;i++){
         ledArray[i].reset();
+    }
+}
+
+function brightnessListener(){
+    if(ledsSet()){
+        postToServer();
     }
 }
 
