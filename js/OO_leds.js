@@ -203,7 +203,7 @@ function postToServer(){
     // TODO:  Bind XMLHttpRequest return eventListener to a bootstrap prompt
     postedLedFlag = false;
     var request = new XMLHttpRequest();
-    request.addEventListener("load", postReturn);
+    request.onreadystatechange = postReturn;
     request.open("POST",URI,true);
 
     request.send(formData);
