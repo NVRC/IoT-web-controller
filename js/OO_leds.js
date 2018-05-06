@@ -12,6 +12,7 @@ var colorSel = document.getElementById('colorSel');
 const INIT = -1;
 var previous = INIT;
 const DEFAULT_COLOR = "#000000";
+var postedLedFlag = false;
 
 class ledButton {
     // The constructor encompasses function declarations
@@ -167,7 +168,7 @@ class ledButton {
                     gradientCount++;
                 }
             }
-            if(ledsSet()){
+            if(ledsSet() && postedLedFlag){
                 postToServer();
             }
         }
@@ -187,7 +188,6 @@ function ledsSet(){
 }
 
 function postToServer(){
-    console.log('Output to LEDS');
     let formData = new FormData();
     let xml='<?xml version=1.0 encoding=UTF-8?>';
     let brightness = document.getElementById('brightness').value;
@@ -198,16 +198,22 @@ function postToServer(){
     formData.append("brightness",brightness);
 
     let URI = 'http://192.168.0.100/cgi-bin/setLEDs.py?'+formData;
-    console.log(formData);
 
     //Instantiate an asynchronous POST request
     // TODO:  Bind XMLHttpRequest return eventListener to a bootstrap prompt
+    postedLedFlag = false;
     var request = new XMLHttpRequest();
+    request.addEventListener("load", postReturn);
     request.open("POST",URI,true);
 
     request.send(formData);
 
     console.log('LED Form submitted');
+}
+
+function postReturn(){
+    console.log('POST returned');
+    postedLedFlag = true;
 }
 
 function buildLeds(){
