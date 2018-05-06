@@ -12,7 +12,7 @@ var colorSel = document.getElementById('colorSel');
 const INIT = -1;
 var previous = INIT;
 const DEFAULT_COLOR = "#000000";
-var postedLedFlag = false;
+var postedLedFlag = true;
 
 class ledButton {
     // The constructor encompasses function declarations
