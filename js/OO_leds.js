@@ -252,7 +252,7 @@ function printPairs(){
 }
 
 function printColorArray(){
-    for(let int i = 0; i < NUM_LEDS; i++){
+    for(let i = 0; i < NUM_LEDS; i++){
         console.log(ledArray[i].getColor());
     }
 }
