@@ -24,7 +24,7 @@ class ledButton {
             let _id = id;
             let _active = false;
             let _pairs = [false,false];
-            let _color = false;
+            let _color = DEFAULT_COLOR;
 
         this.isActive = function(){
             return _active;
