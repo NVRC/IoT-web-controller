@@ -239,9 +239,7 @@ function reset(){
 }
 
 function brightnessListener(){
-    if(ledsSet()){
-        postToServer();
-    }
+    postToServer();
 }
 
 function printPairs(){
