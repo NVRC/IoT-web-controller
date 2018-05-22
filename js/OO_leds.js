@@ -201,7 +201,6 @@ function postToServer(){
 
     //Instantiate an asynchronous POST request
     // TODO:  Bind XMLHttpRequest return eventListener to a bootstrap prompt
-    postedLedFlag = false;
     var request = new XMLHttpRequest();
     request.onreadystatechange = postReturn;
     request.open("POST",URI,true);
