@@ -169,7 +169,9 @@ class ledButton {
                 }
             }
             if(ledsSet() && postedLedFlag){
+                postedLedFlag = false;
                 postToServer();
+
             }
         }
 
@@ -256,4 +258,18 @@ function printColorArray(){
 
 window.onload = function() {
     buildLeds();
+}
+
+// ES6 compliant debounced handler
+function debounced(delay, fn) {
+  let timerId;
+  return function (...args) {
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    timerId = setTimeout(() => {
+      fn(...args);
+      timerId = null;
+    }, delay);
+  }
 }
