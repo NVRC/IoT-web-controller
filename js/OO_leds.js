@@ -199,7 +199,7 @@ function postToServer(){
     }
     formData.append("brightness",brightness);
 
-    let URI = 'http://192.168.0.100/cgi-bin/setLEDs.py?'+formData;
+    let URI = 'http://192.168.0.100/resources/pushToStrip.php?'+formData;
 
     //Instantiate an asynchronous POST request
     // TODO:  Bind XMLHttpRequest return eventListener to a bootstrap prompt
