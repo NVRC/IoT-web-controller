@@ -28,6 +28,7 @@ $config = array(
     ),
     "paths" => array(
         "resources" => "/path/to/resources",
+        "cgi" => "/var/www/scripts/",
         "images" => array(
             "content" => $_SERVER["DOCUMENT_ROOT"] . "/images/content",
             "layout" => $_SERVER["DOCUMENT_ROOT"] . "/images/layout"
