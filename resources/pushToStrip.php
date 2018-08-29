@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $colorArray.$_POST[strval($x)];
     }
 
-    shell_exec('python '.$config['paths']['cgi'].$colorArray.' '.$_POST['brightness']);
+    shell_exec('python3 '.$config['paths']['cgi'].$colorArray.' '.$_POST['brightness']);
 } else {
     //  GET
     echo 'Whatcha tryna pull here? Huh?';
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $colorArray.$_GET[strval($x)];
     }
 
-    shell_exec('python '.$config['paths']['cgi'].$colorArray.' '.$_POST['brightness']);
+    shell_exec('python3 '.$config['paths']['cgi'].$colorArray.' '.$_POST['brightness']);
 }
 
 ?>
