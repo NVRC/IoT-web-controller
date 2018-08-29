@@ -1,8 +1,9 @@
 <?php
+require_once("config.php");
 
 $colorArray = '';
 
-if ($_SERVER[REQUEST_METHOD] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // Handle AJAX cgi bin use case (COMMON)
     for ($x = 0; $x < 60; $x++){
         $colorArray.$_POST[strval($x)];
