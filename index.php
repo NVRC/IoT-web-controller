@@ -9,7 +9,7 @@
 ?>
 
 	<div class="row">
-		<div class="col-sm-6 col-md-6 col-lg-6" id="led_buttons" class="btn-group-vertical">
+		<div class="col-sm-6 col-md-6 col-lg-6" id="led_buttons">
 		</div>
 		<div class="col-sm-6 col-md-6 col-lg-6">
 			<div class="row">
