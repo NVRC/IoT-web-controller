@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $colorArray ='';
     // Handle AJAX cgi bin use case (COMMON)
     foreach($_GET as $key => $value){
+        echo $key.' : '.$value;
         if($key == 'brightness'){
             $brightness = $value;
         } else {
