@@ -226,7 +226,7 @@ function buildLeds(){
         var div = document.createElement('div');
         ledArray[i] = new ledButton( i );
         //Set classes to enable CSS
-        div.className = 'round_button ';
+        div.className = 'round_button';
         //Bind the LEDs button click listener
         div.addEventListener("click",ledArray[i].isClicked);
         container.appendChild(div);
