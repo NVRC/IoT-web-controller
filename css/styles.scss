@@ -3,7 +3,7 @@ $button-color-darker: #262626;
 $width-percentage: 1.2vw;
 
 
-#led_buttons {
+#wrapper {
     display: table;
     table-layout: fixed;
 
@@ -11,15 +11,13 @@ $width-percentage: 1.2vw;
     height:100px;
     background-color:Gray;
 }
-#led_buttons div {
+#wrapper div {
     display: table-cell;
     height:100px;
 }
 .round_button {
     //display: block;
     //float: left;
-    width: 3%;
-    height: 3%;
     border: 2px solid $button-color;
     border-radius: 50%;
     color: $button-color;
