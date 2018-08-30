@@ -8,16 +8,6 @@
 
 ?>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-header">
-				<h1>
-					IoT <small>web controller</small>
-				</h1>
-			</div>
-		</div>
-	</div>
 	<div class="row">
 		<div class="col-md-6" id="led_buttons" class="btn-group-vertical">
 		</div>
