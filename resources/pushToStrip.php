@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $colorArray ='';
     // Handle AJAX cgi bin use case (COMMON)
     for ($x = 0; $x < 60; $x++){
-        $colorArray.$_GET[strval($x)];
+        $colorArray.$_GET[$x];
     }
     //exec("python3 .$config['paths']['cgi'] .$colorArray .$_GET['brightness']");
     echo $colorArray;
