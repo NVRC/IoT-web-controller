@@ -21,7 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     //exec("python3 .$config['paths']['cgi'] .$colorArray .$_GET['brightness']");
     echo $colorArray;
     echo $_GET['brightness'];
-    echo shell_exec('python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$_GET['brightness']);
+    $execString = 'python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$_GET['brightness'];
+    echo shell_exec($execString);
 }
 
 ?>
