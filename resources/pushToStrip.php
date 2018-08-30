@@ -13,14 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     echo shell_exec('python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$_POST['brightness']);
 } else {
     //  GET
-    $colorArray ='';
+    $colorArray = '';
     // Handle AJAX cgi bin use case (COMMON)
     foreach($_GET as $key => $value){
         echo $key.' : '.$value;
         if($key == 'brightness'){
             $brightness = $value;
         } else {
-            $colorArray.$value;
+            $colorArray.=$value;
         }
     }
     //exec("python3 .$config['paths']['cgi'] .$colorArray .$_GET['brightness']");
