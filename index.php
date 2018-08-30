@@ -9,19 +9,19 @@
 ?>
 
 	<div class="row">
-		<div class="col-md-6" id="led_buttons" class="btn-group-vertical">
+		<div class="col-sm-6 col-md-6 col-lg-6" id="led_buttons" class="btn-group-vertical">
 		</div>
-		<div class="col-md-6">
+		<div class="col-sm-6 col-md-6 col-lg-6">
 			<div class="row">
-				<div class="col-md-6" class="slidecontainer">
+				<div class="col-sm-6 col-md-6 col-lg-6" class="slidecontainer">
                     <input type="range" min="0" max="255" value="127" class="slider float-left" id="brightness">
 				</div>
-				<div class="col-md-6">
+				<div class="col-sm-6 col-md-6 col-lg-6">
 					<div class="row">
-						<div class="col-md-6">
-                            <button class="btn-default btn-lg float-left" type="button" id="reset" value="Reset" onclick="reset()">Reset</button>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+                            <button class="" type="button" id="reset" value="Reset" onclick="reset()">Reset</button>
 						</div>
-						<div class="col-md-6">
+						<div class="col-sm-6 col-md-6 col-lg-6">
                             Blank Button
 						</div>
 					</div>
@@ -41,6 +41,7 @@
 </div>
 
 
+<script src="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/lux/bootstrap.min.css"></script>
 <script src="js/gradient-min.js"></script>
 <script src="js/OO_leds.js"></script>
 
