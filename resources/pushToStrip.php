@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     echo $colorArray;
     echo $_GET['brightness'];
     $execString = 'python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$_GET['brightness'];
+    echo $execString;
     echo shell_exec($execString);
 }
 
