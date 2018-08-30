@@ -7,7 +7,7 @@ $width-percentage: 1.2vw;
     //display: block;
     //float: left;
     width: calc(100% / 60);
-    width: calc(100% / 60);
+    height: calc(100% / 60);
     border: 2px solid $button-color;
     border-radius: 50%;
     color: $button-color;
