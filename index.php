@@ -8,7 +8,7 @@
 
 ?>
 
-	<div class="row">
+	<div class="flex-row">
 		<div class="col-sm-12 col-md-12 col-lg-12" id="led_buttons">
 		</div>
 		<div class="col-sm-6 col-md-6 col-lg-6">

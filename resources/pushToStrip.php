@@ -10,7 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         handlePair($key,$value,$colorArray,$brightness);
     }
     $execString = 'python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$brightness;
-    shell_exec($execString);
+    echo "python exec string: ".$execString;
+    $str = shell_exec($execString);
+    echo $str;
 } else {
     //  GET
 
@@ -20,7 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 
     $execString = 'python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$brightness;
-    shell_exec($execString);
+    echo "python exec string: ".$execString;
+    $str = shell_exec($execString);
+    echo $str;
 }
 function handlePair($k,$v,&$src,&$btr){
     if($k == 'brightness'){

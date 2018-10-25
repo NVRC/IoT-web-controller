@@ -15,7 +15,7 @@ The below diagram demonstrates the general request processing flow and establish
                                  +---------+                                     +-----------+                                 +---------+
                                  | Browser |                                    | WebServer  |                                 | Arduino |
                                  +---------+                                     +-----------+                                 +---------+
-                                      |                                               |                                            | ]-------------------\
+                                      |                                               |                                            | -------------------\
                                       |                                               |                                            |-| DTR pin disabled |
                                       |                                               |                                            | |------------------|
                                       |                                               |                                            |
