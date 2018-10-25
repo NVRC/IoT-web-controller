@@ -21,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         echo "key: ".$key."     value: ".$value;
         handlePair($key,$value,$colorArray,$brightness);
     }
-    echo "colorArray: ".$colorArray;
+    echo "colorArray: ".$colorArray."\n";
     $execString = 'python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$brightness;
-    echo "python exec string: ".$execString;
+    echo "python exec string: ".$execString."\n";
     $str = shell_exec($execString);
     echo $str;
 }
