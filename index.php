@@ -41,7 +41,6 @@
 </div>
 
 
-<script src="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/lux/bootstrap.min.css"></script>
 <script src="js/gradient-min.js"></script>
 <script src="js/OO_leds.js"></script>
 
