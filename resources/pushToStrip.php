@@ -18,9 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     // Handle AJAX cgi bin use case (COMMON)
     foreach($_GET as $key => $value){
+        echo "key: ".$key."     value: ".$value;
         handlePair($key,$value,$colorArray,$brightness);
     }
-
+    echo "colorArray: ".$colorArray;
     $execString = 'python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$brightness;
     echo "python exec string: ".$execString;
     $str = shell_exec($execString);
