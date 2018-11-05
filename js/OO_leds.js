@@ -193,11 +193,18 @@ function postToServer(){
     let formData = new FormData();
     let xml='<?xml version=1.0 encoding=UTF-8?>';
     let brightness = document.getElementById('brightness').value;
+    let rate = document.getElementById('input-rate').value;
+
+    let e = document.getElementById("input-animation");
+    let anim = e.options[e.selectedIndex].value;
+
     for(let i=0;i<NUM_LEDS;i++){
         //Remove Hashtags found in HTML element style.background values .replace(/#/g,'')
         formData.append(i, ledArray[i].getColor().toString().replace(/#/g,''));
     }
     formData.append("brightness",brightness);
+    formData.append("animation",anim);
+    formData.append("rate",rate);
 
     let URI = 'http://192.168.0.100/resources/pushToStrip.php?'+formData;
 

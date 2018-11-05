@@ -59,6 +59,9 @@ The below diagram demonstrates the general request processing flow and establish
 [code](###sequence-diagram-code)
 
 
+## Rate calculation
+_Rate_ (ms): The time in milliseconds between each updated color display.
+
 # Appendix
 ### Sequence diagram code
 ```
