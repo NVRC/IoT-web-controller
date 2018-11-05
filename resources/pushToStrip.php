@@ -23,9 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         echo "key: ".$key."     value: ".$value;
         handlePair($key,$value,$colorArray,$brightness);
     }
-    echo "colorArray: ".$colorArray."\n";
-    $execString = 'python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$brightness;
-    echo "python exec string: ".$execString."\n";
+    $execString = 'python3 '.$config['paths']['cgi'].' '.$colorArray.' '.$brightness.' '.$animation.' '.$rate;
+    echo "python exec string: ".$execString;
     $str = shell_exec($execString);
     echo $str;
 }
