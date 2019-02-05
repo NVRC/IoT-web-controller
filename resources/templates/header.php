@@ -28,5 +28,9 @@
     					IoT <small>web controller</small>
     				</h1>
     			</div>
+
     		</div>
+            <div>
+                <a href="../pages/presets.php">Presets</a>
+            </div>
     	</div>
