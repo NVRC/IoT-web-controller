@@ -33,6 +33,6 @@
 
     		</div>
             <div>
-                <a href=<?php echo PAGES_PATH.'/presets.php'?>><?php echo PAGES_PATH.'/presets.php'?></a>
+                <a href=<?php echo '/resources/pages/presets.php'?>>presets</a>
             </div>
     	</div>
