@@ -1,3 +1,7 @@
+<?php
+$presetPath = PAGES_PATH.'presets.php';
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,6 +35,6 @@
 
     		</div>
             <div>
-                <a href="../pages/presets.php">Presets</a>
+                <a href=<?php echo $presetPath?>>Presets</a>
             </div>
     	</div>

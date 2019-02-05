@@ -52,6 +52,9 @@ defined("LIBRARY_PATH")
 defined("TEMPLATES_PATH")
     or define("TEMPLATES_PATH", realpath(dirname(__FILE__) . '/templates'));
 
+defined("PAGES_PATH")
+    or define("PAGES_PATH", realpath(dirname(__FILE__) . '/pages'));
+
 /*
     Error reporting.
 */
