@@ -19,6 +19,6 @@ function fetchColorPairs(){
 
 $colorPairArray = fetchColorPairs();
 for($i = 0; $i < count($colorPairArray); $i++){
-    echo 'grad'.$i.'{'.'background: linear-gradient(to right, '.$colorPairArray[$i]['left'].' 100%, '.$colorPairArray[$i]['right'].' 100%);'.'}';
+    echo '#grad'.$i.'{'.'background: linear-gradient(to right, '.$colorPairArray[$i]['left'].' 100%, '.$colorPairArray[$i]['right'].' 100%);'.'}';
 }
 ?>
