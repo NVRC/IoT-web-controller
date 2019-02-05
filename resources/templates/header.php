@@ -1,7 +1,4 @@
-<?php
-require_once("../config.php");
-$presetPath = PAGES_PATH.'/presets.php';
-?>
+
 
 <!doctype html>
 <html lang="en">
@@ -36,6 +33,6 @@ $presetPath = PAGES_PATH.'/presets.php';
 
     		</div>
             <div>
-                <a href=<?php echo $presetPath?>>Presets</a>
+                <a href=<?php echo PAGES_PATH.'/presets.php'?>><?php echo PAGES_PATH.'/presets.php'?></a>
             </div>
     	</div>
