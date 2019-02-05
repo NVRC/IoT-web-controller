@@ -19,6 +19,11 @@ function fetchColorPairs(){
 
 $colorPairArray = fetchColorPairs();
 for($i = 0; $i < count($colorPairArray); $i++){
-    echo '#grad'.$i.'{'.'background: linear-gradient(to right, '.$colorPairArray[$i]['left'].' 100%, '.$colorPairArray[$i]['right'].' 100%);'.'}';
+    // TODO: Add responsive sizing to the color gradient tiles
+    echo '#grad'.$i.'{'.'background: linear-gradient(to right, '.$colorPairArray[$i]['left'].' 100%, '
+        .$colorPairArray[$i]['right'].' 100%);'
+        .'height: 100px;'
+        .'width: 100px;'
+        .'}';
 }
 ?>
