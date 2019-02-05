@@ -1,5 +1,5 @@
 <?php
-$presetPath = PAGES_PATH.'presets.php';
+$presetPath = PAGES_PATH.'/presets.php';
 ?>
 
 <!doctype html>
