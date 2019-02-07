@@ -41,4 +41,35 @@ function handlePair($k,$v,&$src,&$btr,&$anim,&$rt){
     }
 }
 
+function pushToDB($colorString){
+    $dsn =  'mysql:host='.$config['db']['strips']['host']
+            .';dbname='.$config['db']['strips']['dbname']
+            .';charset='.$config['db']['strips']['charset'];
+    $user = $config['db']['strips']['host'];
+    $pass = $config['db']['strips']['password'];
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+    try {
+         $pdo = new PDO($dsn, $user, $pass, $options);
+    } catch (\PDOException $e) {
+         throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    }
+
+    try {
+        $pdo->beginTransaction();
+        $tempNull = null;
+        $stmt = $pdo->prepare('INSERT INTO color_string (colorString) VALUES (:colorString, :occurences, ...)');
+        bindParam(':occurences', $tempNull = NULL, PDO::PARAM_INT);
+        $stmt->execute([$colorString]);
+        $pdo->commit();
+    }catch (Exception $e){
+        $pdo->rollback();
+        throw $e;
+    }
+
+}
+
 ?>

@@ -1,5 +1,4 @@
 <?php
-/*** set the content type header ***/
 header("Content-type: text/css");
 
 function randColor() {

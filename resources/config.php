@@ -10,11 +10,12 @@
 
 $config = array(
     "db" => array(
-        "db1" => array(
-            "dbname" => "database1",
-            "username" => "dbUser",
-            "password" => "pa$$",
-            "host" => "localhost"
+        "strips" => array(
+            "dbname" => "colorStripDB",
+            "username" => "webtunnel",
+            "password" => "toughdb",
+            "host" => "localhost",
+            "charset" => "utf8mb4";
         ),
         "db2" => array(
             "dbname" => "database2",
