@@ -39,7 +39,7 @@
         }
         //  Bootstrap template permalink: http://bit.ly/2wvdWIM
         $stmt = $pdo->query('SELECT * FROM (
-            SELECT * FROM yourTableName ORDER BY id DESC LIMIT 10
+            SELECT * FROM colorStrings ORDER BY id DESC LIMIT 10
             )   Var1
             ORDER BY id ASC');
         while ($row = $stmt->fetch())
@@ -48,9 +48,9 @@
         }
 
         function generateTableRow($id, $colorString, $occurences, $lastUsage){
-            echo '<tr>';
-            echo '<th scope="row">'.$id.'</th>';
-            echo '<td>'.$colorString.'</td>
+            return '<tr>'
+                   .'<th scope="row">'.$id.'</th>'
+                   .'<td>'.$colorString.'</td>
                     <td>NULL</td>
                     <td>NULL</td>
                     </tr>';
