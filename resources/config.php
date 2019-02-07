@@ -15,7 +15,7 @@ $config = array(
             "username" => "webtunnel",
             "password" => "toughdb",
             "host" => "localhost",
-            "charset" => "utf8mb4";
+            "charset" => "utf8mb4"
         ),
         "db2" => array(
             "dbname" => "database2",
