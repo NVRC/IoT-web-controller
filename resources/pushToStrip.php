@@ -45,7 +45,7 @@ function pushToDB($colorString){
     $dsn =  'mysql:host='.$config['db']['strips']['host']
             .';dbname='.$config['db']['strips']['dbname']
             .';charset='.$config['db']['strips']['charset'];
-    $user = $config['db']['strips']['host'];
+    $user = $config['db']['strips']['username'];
     $pass = $config['db']['strips']['password'];
     $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
