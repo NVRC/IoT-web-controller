@@ -45,7 +45,7 @@
         while ($row = $stmt->fetch())
         {
             echo '<tr>'
-                   .'<th scope="row">'.$row['id'].'</th>'
+                   .'<th scope="row">'.$row['record_id'].'</th>'
                    .'<td>'.$row['color_string'].'</td>
                     <td>NULL</td>
                     <td>NULL</td>
