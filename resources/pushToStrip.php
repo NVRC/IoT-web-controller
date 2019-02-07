@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     echo "python exec string: ".$execString;
     $str = shell_exec($execString);
     echo $str;
+    pushToDB($colorArray);
 } else {
     //  GET
 
@@ -27,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     echo "python exec string: ".$execString;
     $str = shell_exec($execString);
     echo $str;
+    pushToDB($colorArray);
 }
 function handlePair($k,$v,&$src,&$btr,&$anim,&$rt){
     if($k == 'brightness'){
@@ -61,7 +63,7 @@ function pushToDB($colorString){
     try {
         $pdo->beginTransaction();
         $tempNull = null;
-        $stmt = $pdo->prepare('INSERT INTO colorStrings (colorString, 0 , ...) VALUES (:colorString, :occurences, ...)');
+        $stmt = $pdo->prepare('INSERT INTO colorStrips (colorString, 0 , ...) VALUES (:colorString, :occurences, ...)');
         bindParam(':occurences', $tempNull = NULL, PDO::PARAM_INT);
         $stmt->execute([$colorString]);
         $pdo->commit();
