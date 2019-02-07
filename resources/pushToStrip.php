@@ -61,7 +61,7 @@ function pushToDB($colorString){
     try {
         $pdo->beginTransaction();
         $tempNull = null;
-        $stmt = $pdo->prepare('INSERT INTO color_string (colorString) VALUES (:colorString, :occurences, ...)');
+        $stmt = $pdo->prepare('INSERT INTO colorStrings (colorString, 0 , ...) VALUES (:colorString, :occurences, ...)');
         bindParam(':occurences', $tempNull = NULL, PDO::PARAM_INT);
         $stmt->execute([$colorString]);
         $pdo->commit();
