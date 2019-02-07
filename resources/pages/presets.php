@@ -39,7 +39,7 @@
         }
         //  Bootstrap template permalink: http://bit.ly/2wvdWIM
         $stmt = $pdo->query('SELECT * FROM (
-            SELECT * FROM colorStrings ORDER BY id DESC LIMIT 10
+            SELECT * FROM colorStrips ORDER BY id DESC LIMIT 10
             )   Var1
             ORDER BY id ASC');
         while ($row = $stmt->fetch())
