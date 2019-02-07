@@ -44,17 +44,15 @@
             ORDER BY id ASC');
         while ($row = $stmt->fetch())
         {
-            generateTableRow($row['id'], $row['color_string'], 0, 0);
-        }
-
-        function generateTableRow($id, $colorString, $occurences, $lastUsage){
-            return '<tr>'
-                   .'<th scope="row">'.$id.'</th>'
-                   .'<td>'.$colorString.'</td>
+            echo '<tr>'
+                   .'<th scope="row">'.$row['id'].'</th>'
+                   .'<td>'.$row['color_string'].'</td>
                     <td>NULL</td>
                     <td>NULL</td>
                     </tr>';
         }
+
+
     ?>
     </tbody>
 </table>
