@@ -63,10 +63,26 @@ function pushToDB($colorString){
 
     try {
         $pdo->beginTransaction();
-        $tempNull = null;
-        $stmt = $pdo->prepare('INSERT INTO colorStrips (colorString, 0 , ...) VALUES (:colorString, :occurences, ...)');
-        bindParam(':occurences', $tempNull = NULL, PDO::PARAM_INT);
+        $stmt = $pdo->prepare('SELECT FROM colorStrings WHERE color_string=?');
         $stmt->execute([$colorString]);
+        $dataSet = $stmt->fetchAll();
+
+        $currDate = date('Y-m-d H:i:s');
+
+        if(empty($dataSet)){
+            // INSERT INTO DB
+            $stm = $pdo->prepare('INSERT INTO colorStrings (color_string,
+                occurences,
+                last_usage) values (?, 1, ?)');
+
+            $stm->execute([$colorString, $currDate]);
+        } else {
+            $occurences = $dataSet[0]['occurences'] + 1;
+            $stm = $pdo->prepare('UPDATE colorStrings SET occurences=?,
+                last_usage=?
+                WHERE color_string=?');
+            $stm->execute([$occurences, $currDate, $colorString ]);
+        }
         $pdo->commit();
     }catch (Exception $e){
         $pdo->rollback();
