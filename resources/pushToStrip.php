@@ -64,7 +64,7 @@ function pushToDB($colorString){
 
     try {
         $pdo->beginTransaction();
-        $stmt = $pdo->prepare('SELECT FROM colorStrings WHERE color_string=?');
+        $stmt = $pdo->prepare('SELECT * FROM colorStrings WHERE color_string=?');
         $stmt->execute([$colorString]);
         $dataSet = $stmt->fetchAll();
 
