@@ -64,7 +64,7 @@ function pushToDB($colorString){
 
     try {
         $pdo->beginTransaction();
-        $stmt = $pdo->prepare('SELECT * FROM colorStrings WHERE color_string=?');
+        $stmt = $pdo->prepare('SELECT * FROM colorStrips WHERE color_string=?');
         $stmt->execute([$colorString]);
         $dataSet = $stmt->fetchAll();
 
@@ -72,14 +72,14 @@ function pushToDB($colorString){
 
         if(empty($dataSet)){
             // INSERT INTO DB
-            $stm = $pdo->prepare('INSERT INTO colorStrings (color_string,
+            $stm = $pdo->prepare('INSERT INTO colorStrips (color_string,
                 occurences,
                 last_usage) values (?, 1, ?)');
 
             $stm->execute([$colorString, $currDate]);
         } else {
             $occurences = $dataSet[0]['occurences'] + 1;
-            $stm = $pdo->prepare('UPDATE colorStrings SET occurences=?,
+            $stm = $pdo->prepare('UPDATE colorStrips SET occurences=?,
                 last_usage=?
                 WHERE color_string=?');
             $stm->execute([$occurences, $currDate, $colorString ]);
