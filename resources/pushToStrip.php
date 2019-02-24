@@ -44,6 +44,7 @@ function handlePair($k,$v,&$src,&$btr,&$anim,&$rt){
 }
 
 function pushToDB($colorString){
+    global $config;
     $dsn =  'mysql:host='.$config['db']['strips']['host']
             .';dbname='.$config['db']['strips']['dbname']
             .';charset='.$config['db']['strips']['charset'];
