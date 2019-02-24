@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require_once("/resources/config.php");
 
 $colorArray = '';
 $brightness;
@@ -44,7 +44,6 @@ function handlePair($k,$v,&$src,&$btr,&$anim,&$rt){
 }
 
 function pushToDB($colorString){
-    require_once("config.php");
     $dsn =  'mysql:host='.$config['db']['strips']['host']
             .';dbname='.$config['db']['strips']['dbname']
             .';charset='.$config['db']['strips']['charset'];
