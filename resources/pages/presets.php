@@ -11,6 +11,7 @@
 
 <table class="table table-hover">
     <thead>
+        Most Common
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Color String</th>
@@ -41,15 +42,19 @@
         $stmt = $pdo->query('SELECT * FROM (
             SELECT * FROM colorStrips ORDER BY record_id DESC LIMIT 10
             )   Var1
-            ORDER BY record_id ASC');
+            ORDER BY last_usage DESC');
         while ($row = $stmt->fetch())
         {
+            $colorStr = $row['color_string'];
+            $colorStrLow = substr($colorStr,0,6);
+            $colorStrHigh = substr($colorStr,-6,0);
+
             echo '<tr>'
                    .'<th scope="row">'.$row['record_id'].'</th>'
-                   .'<td>'.$row['color_string'].'</td>
-                    <td>NULL</td>
-                    <td>NULL</td>
-                    </tr>';
+                   .'<td>'.$colorStrLow.' ... '.$colorStrHigh.'</td>
+                    <td>'.$row['occurences'].'</td>
+                    <td>'.$row['last_usage'].'</td>
+                 </tr>';
         }
 
 
